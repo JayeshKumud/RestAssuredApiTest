@@ -2,8 +2,10 @@ package com.test;
 
 import com.framework.RestAssuredConfiguration;
 import com.google.gson.Gson;
-import com.test.bin.CityBin;
+import com.test.bin.Datum;
+import com.test.bin.Weather;
 import com.test.common.EndPoint;
+import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
@@ -14,7 +16,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -22,19 +27,19 @@ import static org.hamcrest.Matchers.equalTo;
 public class WeatherReport {
 
     @Test
-    public void validateCountries(){
+    public void validateCountries() {
         given().get(EndPoint.GET_ALL_COUNTRIES).then().statusCode(200).log().all();
     }
 
     @Test
-    public void validateCountriesQueryParams(){
+    public void validateCountriesQueryParams() {
         RequestSpecification requestSpecification = new RestAssuredConfiguration().getRequestSpecification();
         requestSpecification.queryParam("key", "N8DyZwa5D69oTGYyX").log().all();
         given().spec(requestSpecification).get(EndPoint.GET_ALL_COUNTRY).then().statusCode(200).log().all();
     }
 
     @Test
-    public void validateStatesQueryParams(){
+    public void validateStatesQueryParams() {
         Map<String, String> queryParams = new HashMap();
         queryParams.put("country", "USA");
         queryParams.put("key", "N8DyZwa5D69oTGYyX");
@@ -56,6 +61,9 @@ public class WeatherReport {
         // Getting Response
         Response response = given().spec(requestSpecification).get(EndPoint.GET_ALL_CITIES);
 
+        // Assert Response Time
+        Assert.assertTrue(response.getTimeIn(TimeUnit.SECONDS) <= 10, "Response Time is not with in limit.");
+
         // Hard Assertion
         response.then().body("data[0].city", equalTo("Addison"));
 
@@ -74,18 +82,19 @@ public class WeatherReport {
         softAssert.assertEquals(response.path("data[2].city"), "Buffalo");
         softAssert.assertAll();
 
-        // Java object
-        Gson gson = new Gson();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(response.asInputStream()));
-        CityBin cityBin = gson.fromJson(reader, CityBin.class);
-        System.out.println(cityBin.getCity());
-        System.out.println(cityBin.getCity());
-        //Arrays.stream(cityBin).forEach(s -> Assert.assertEquals(s.toString(), "Addison"));
-
+        // Java object 1st way
+        Weather weather = response.as(Weather.class, ObjectMapperType.GSON);
+        List<Datum> data = weather.getData();
+        data.forEach(s ->
+        {
+            softAssert.assertNotEquals(s.getCity(), "", "City Blank");
+            softAssert.assertNotEquals(s.getCity(), null, "City Null");
+        });
+        softAssert.assertAll();
     }
 
     @Test
-    public void validateNearestCityQueryParams(){
+    public void validateNearestCityQueryParams() {
         Map<String, String> queryParams = new HashMap();
         queryParams.put("lat", "48.02");
         queryParams.put("lon", "50.02");
