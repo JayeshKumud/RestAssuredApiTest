@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ApiTestingSuite" verbose="1" >
+    <test name="ApiTest"   >
+        <groups>
+            <run>
+                <include name="demo"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.framework" />
+            <package name="com.test"/>
+        </packages>
+    </test>
+</suite>
