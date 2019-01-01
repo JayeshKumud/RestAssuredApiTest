@@ -1,8 +1,7 @@
 package com.test;
 
 import com.framework.RestAssuredConfiguration;
-import com.google.gson.Gson;
-import com.test.bin.Datum;
+import com.test.bin.City;
 import com.test.bin.Weather;
 import com.test.common.EndPoint;
 import io.restassured.mapper.ObjectMapperType;
@@ -12,14 +11,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -50,10 +45,12 @@ public class WeatherReport {
 
     @Test(groups = "demo")
     public void validateCityQueryParams() {
+
         Map<String, String> queryParams = new HashMap();
         queryParams.put("country", "USA");
         queryParams.put("state", "New York");
         queryParams.put("key", "N8DyZwa5D69oTGYyX");
+
         RequestSpecification requestSpecification = new RestAssuredConfiguration().getRequestSpecification();
         requestSpecification.queryParams(queryParams).log().all();
         given().spec(requestSpecification).get(EndPoint.GET_ALL_CITIES).then().statusCode(200).log().all();
@@ -84,7 +81,7 @@ public class WeatherReport {
 
         // Java object 1st way
         Weather weather = response.as(Weather.class, ObjectMapperType.GSON);
-        List<Datum> data = weather.getData();
+        List<City> data = weather.getData();
         data.forEach(s ->
         {
             softAssert.assertNotEquals(s.getCity(), "", "City Blank");

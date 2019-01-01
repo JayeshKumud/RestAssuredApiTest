@@ -1,5 +1,6 @@
 package com.framework;
 
+import com.framework.managers.FileReaderManager;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -11,8 +12,8 @@ public class RestAssuredConfiguration {
 
     @BeforeSuite(alwaysRun = true)
     public void configure() {
-        RestAssured.baseURI = "http://api.airvisual.com";
-        RestAssured.basePath = "/v2";
+        RestAssured.baseURI = FileReaderManager.getInstance().getConfigFileReader().getBaseURI();
+        RestAssured.basePath = FileReaderManager.getInstance().getConfigFileReader().getBasePath();
     }
 
     public RequestSpecification getRequestSpecification() {

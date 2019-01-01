@@ -12,7 +12,7 @@ public class Weather {
     private String status;
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<City> data = null;
 
     public String getStatus() {
         return status;
@@ -22,11 +22,11 @@ public class Weather {
         this.status = status;
     }
 
-    public List<Datum> getData() {
+    public List<City> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<City> data) {
         this.data = data;
     }
 
