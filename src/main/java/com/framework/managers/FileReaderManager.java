@@ -2,19 +2,12 @@ package com.framework.managers;
 
 import com.framework.dataProvider.ConfigFileReader;
 
-public class FileReaderManager {
+public enum FileReaderManager {
 
-    private static FileReaderManager fileReaderManager;
+    INSTANCE;
     private static ConfigFileReader configFileReader;
 
-    private FileReaderManager(){
-    }
-
-    public static FileReaderManager getInstance(){
-        return fileReaderManager == null ?  fileReaderManager = new FileReaderManager() : fileReaderManager;
-    }
-
     public ConfigFileReader getConfigFileReader(){
-        return configFileReader == null ? configFileReader = new ConfigFileReader() : configFileReader;
+        return (configFileReader == null) ? (configFileReader = new ConfigFileReader()) : configFileReader;
     }
 }

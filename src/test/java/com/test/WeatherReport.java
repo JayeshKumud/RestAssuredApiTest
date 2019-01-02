@@ -4,6 +4,8 @@ import com.framework.RestAssuredConfiguration;
 import com.test.bin.City;
 import com.test.bin.Weather;
 import com.test.common.EndPoint;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -28,18 +30,32 @@ public class WeatherReport {
 
     @Test
     public void validateCountriesQueryParams() {
+
+        // Get requirement specification (RestAssured.given.ContentType(ContentType.json)
         RequestSpecification requestSpecification = new RestAssuredConfiguration().getRequestSpecification();
+
+        // Updated requirement specification with Query parameter and log the same
         requestSpecification.queryParam("key", "N8DyZwa5D69oTGYyX").log().all();
+
+        // Submit the request with End Point URL and check the status code
         given().spec(requestSpecification).get(EndPoint.GET_ALL_COUNTRY).then().statusCode(200).log().all();
     }
 
     @Test
     public void validateStatesQueryParams() {
+
+        // Create Map reference to store the multiple query parameter
         Map<String, String> queryParams = new HashMap();
         queryParams.put("country", "USA");
         queryParams.put("key", "N8DyZwa5D69oTGYyX");
+
+        // Get the requirement specification (RestAssured.Given().ContentType(ContentType.json)
         RequestSpecification requestSpecification = new RestAssuredConfiguration().getRequestSpecification();
+
+        //  Updated requirement specification with Query parameter and log the same
         requestSpecification.queryParams(queryParams).log().all();
+
+        // Submit the request with End Point URL and check the status code
         given().spec(requestSpecification).get(EndPoint.GET_ALL_STATE).then().statusCode(200).log().all();
     }
 

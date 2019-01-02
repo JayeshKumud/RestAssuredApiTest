@@ -12,8 +12,8 @@ public class RestAssuredConfiguration {
 
     @BeforeSuite(alwaysRun = true)
     public void configure() {
-        RestAssured.baseURI = FileReaderManager.getInstance().getConfigFileReader().getBaseURI();
-        RestAssured.basePath = FileReaderManager.getInstance().getConfigFileReader().getBasePath();
+        RestAssured.baseURI = FileReaderManager.INSTANCE .getConfigFileReader().getBaseURI();
+        RestAssured.basePath = FileReaderManager.INSTANCE.getConfigFileReader().getBasePath();
     }
 
     public RequestSpecification getRequestSpecification() {
