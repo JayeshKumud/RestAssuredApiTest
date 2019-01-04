@@ -28,13 +28,13 @@ public class ConfigFileReader {
     }
 
     public String getBaseURI(){
-        String baseURI = properties.getProperty("BaseURI");
+        String baseURI = properties.getProperty("baseURI");
         if(baseURI!= null) return baseURI;
         else throw new RuntimeException("BaseURI not specified in the Configuration.properties file.");
     }
 
     public String getBasePath(){
-        String  basePath = properties.getProperty("BasePath");
+        String  basePath = properties.getProperty("basePath");
         if(basePath!= null) return basePath;
         else throw new RuntimeException("BasePath not specified in the Configuration.properties file.");
     }

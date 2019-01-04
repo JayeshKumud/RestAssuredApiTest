@@ -1,7 +1,9 @@
 package com.test;
 
 import com.framework.RestAssuredConfiguration;
+import com.google.gson.Gson;
 import com.test.bin.City;
+import com.test.bin.WR;
 import com.test.bin.Weather;
 import com.test.common.EndPoint;
 import io.restassured.RestAssured;
@@ -13,6 +15,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -104,6 +108,15 @@ public class WeatherReport {
             softAssert.assertNotEquals(s.getCity(), null, "City Null");
         });
         softAssert.assertAll();
+
+//        System.out.println(response.body().as(WR[].class));
+//
+//        Gson gson = new Gson();
+//        WR[] wr = gson.fromJson(response.body().toString(), WR[].class);
+//
+//        softAssert.assertEquals(wr[0].status, "success");
+//
+//        softAssert.assertAll();
     }
 
     @Test
