@@ -21,13 +21,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class WeatherReport {
 
-    @Test
     public void validateCountries() {
         given().get(EndPoint.GET_ALL_COUNTRIES).then().statusCode(200).log().all();
     }
@@ -109,14 +109,13 @@ public class WeatherReport {
         });
         softAssert.assertAll();
 
-//        System.out.println(response.body().as(WR[].class));
-//
-//        Gson gson = new Gson();
-//        WR[] wr = gson.fromJson(response.body().toString(), WR[].class);
-//
-//        softAssert.assertEquals(wr[0].status, "success");
-//
-//        softAssert.assertAll();
+        Gson gson = new Gson();
+        WR wr = response.as(WR.class, ObjectMapperType.GSON);
+
+        softAssert.assertEquals(wr.status, "success");
+        softAssert.assertTrue(wr.data.stream().anyMatch(s -> s.city.equals("Addison")), "Fail to identify 'Addison' in the list");
+        softAssert.assertTrue(wr.data.stream().filter(s -> s.city.equals("Addison")).findAny().isPresent(), "Fail to identify 'Addison' in the list");
+        softAssert.assertAll();
     }
 
     @Test

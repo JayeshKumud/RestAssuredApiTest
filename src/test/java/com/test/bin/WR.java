@@ -3,6 +3,8 @@ package com.test.bin;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class WR {
 
     @SerializedName("status")
@@ -11,7 +13,7 @@ public class WR {
 
     @SerializedName("data")
     @Expose
-    public Data data;
+    public List<Data> data;
 
     public class Data{
 
