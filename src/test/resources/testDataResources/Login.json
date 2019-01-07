@@ -1,0 +1,50 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Selenium With C#",
+      "author": "Jayesh"
+    },
+    {
+      "id": 2,
+      "title": "Appium",
+      "author": "Jayesh"
+    },
+    {
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "Good courses",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "Jacob"
+  },
+  "Address" : {
+    "Primary" : [
+      {
+        "city" : "Auckland",
+        "state" : "Auckland",
+        "country": "New Zealand",
+        "PinCode": 1010
+      },
+      {
+        "city" : "QueensTown",
+        "state" : "QueensTown",
+        "country": "New Zealand",
+        "PinCode": 34232
+      }
+    ],"Secondary" : [
+      {
+        "city" : "Chennai",
+        "state" : "TN",
+        "country": "India",
+        "PinCode": 600100
+      }
+    ]
+  }
+}
