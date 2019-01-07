@@ -1,4 +1,4 @@
-package com.test.common;
+package testNG;
 
 public interface EndPoint {
 

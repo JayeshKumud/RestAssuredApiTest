@@ -1,6 +1,6 @@
-package com.framework.managers;
+package managers;
 
-import com.framework.dataProvider.ConfigFileReader;
+import dataProvider.ConfigFileReader;
 
 public enum FileReaderManager {
 

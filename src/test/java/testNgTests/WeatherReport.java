@@ -1,13 +1,11 @@
-package com.test;
+package testNgTests;
 
-import com.framework.RestAssuredConfiguration;
+import testNG.RestAssuredConfiguration;
 import com.google.gson.Gson;
-import com.test.bin.City;
-import com.test.bin.WR;
-import com.test.bin.Weather;
-import com.test.common.EndPoint;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
+import testDataType.City;
+import testDataType.WR;
+import testDataType.Weather;
+import testNG.EndPoint;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -15,13 +13,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Predicate;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
