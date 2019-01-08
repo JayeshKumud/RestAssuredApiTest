@@ -23,6 +23,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class WeatherReport {
 
+    @Test
     public void validateCountries() {
         given().get(EndPoint.GET_ALL_COUNTRIES).then().statusCode(200).log().all();
     }
@@ -30,7 +31,7 @@ public class WeatherReport {
     @Test
     public void validateCountriesQueryParams() {
 
-        // Get requirement specification (RestAssured.given.ContentType(ContentType.json)
+        // Get requirement specification = RestAssured.given().ContentType(ContentType.json)
         RequestSpecification requestSpecification = new RestAssuredConfiguration().getRequestSpecification();
 
         // Updated requirement specification with Query parameter and log the same
