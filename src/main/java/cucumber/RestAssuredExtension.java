@@ -24,12 +24,29 @@ public class RestAssuredExtension {
         request = RestAssured.given().spec(requestSpec);
     }
 
-    public static ResponseOptions<Response> getOps(String endPoint) throws URISyntaxException {
-        return request.get(new URI(endPoint));
+    public static ResponseOptions<Response> getOps(String endPoint) {
+        return request.get(endPoint);
     }
 
-    public static void getOpsWithPathParameter(String endPoint, Map<String, String> pathParams) throws URISyntaxException {
+    public static ResponseOptions<Response> getOpsWithPathParams(String endPoint, Map<String, String> pathParams) {
         request.pathParams(pathParams);
-        request.get(new URI(endPoint));
+        return request.get(endPoint);
     }
+
+    public static ResponseOptions<Response> deleteOpsWithPathParams(String endPoint, Map<String, String> pathParams){
+        request.pathParams(pathParams);
+        return request.delete(endPoint);
+    }
+
+    public static ResponseOptions<Response> postOpsWithBody(String endPoint, Map<String, String> body){
+        request.body(body);
+        return request.post(endPoint);
+    }
+
+    public static ResponseOptions<Response> PostOpsWithBodyAndPathParams(String endPoint, Map<String, String> pathParams, Map<String, String> body) {
+        request.pathParams(pathParams);
+        request.body(body);
+        return request.post(endPoint);
+    }
+
 }

@@ -2,6 +2,7 @@ package stepDefinations;
 
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 
 import java.util.HashMap;
 
@@ -51,21 +52,21 @@ public class BddMethods {
 
     }
 
-    public static void peformPostWithBodyParameter(){
+    public static void performPostWithBodyParameter(){
 
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("id", "4");
-        hashMap.put("title", "Rest Assure Course");
-        hashMap.put("author", "Kumud");
+        HashMap<String, String> postContent = new HashMap<>();
+        postContent.put("id", "6");
+        postContent.put("title", "Rest Assure Course");
+        postContent.put("author", "Kumud");
 
         given()
                 .contentType(ContentType.JSON)
         .with()
-                .body(hashMap)
+                .body(postContent)
         .when()
                 .post("http://localhost:3000/posts/")
         .then()
-                .body("author", Matchers.hasItem("Kumud"));
+                .body("author", Is.is("Kumud"));
 
     }
 

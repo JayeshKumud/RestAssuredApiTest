@@ -1,6 +1,7 @@
 package stepDefinations;
 
 import cucumber.RestAssuredExtension;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -48,4 +49,11 @@ public class GetPostSteps {
     public void userShouldSeeTheAuthorNameAs(String authorName) throws Throwable {
         MatcherAssert.assertThat(response.getBody().jsonPath().get("author"), Matchers.hasItem(authorName));
     }
+
+    @Given("^User perform POST operation$")
+    public void userPerformPOSTOperation() {
+        //BddMethods.performPostWithBodyParameter();
+    }
+
+
 }

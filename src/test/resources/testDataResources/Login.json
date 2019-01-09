@@ -12,6 +12,21 @@
     },
     {
       "id": 3
+    },
+    {
+      "author": "Kumud",
+      "id": "4",
+      "title": "Rest Assure Course"
+    },
+    {
+      "author": "ExecuteAutomation",
+      "id": "5",
+      "title": "Robotium course"
+    },
+    {
+      "author": "Kumud",
+      "id": "6",
+      "title": "Rest Assure Course"
     }
   ],
   "comments": [
@@ -22,26 +37,36 @@
     }
   ],
   "profile": {
-    "name": "Jacob"
-  },
-  "Address" : {
-    "Primary" : [
+    "Test": [
       {
-        "city" : "Auckland",
-        "state" : "Auckland",
+        "id": 1,
+        "name": "Test1"
+      },
+      {
+        "id": 2,
+        "name": "Test2"
+      }
+    ]
+  },
+  "Address": {
+    "Primary": [
+      {
+        "city": "Auckland",
+        "state": "Auckland",
         "country": "New Zealand",
         "PinCode": 1010
       },
       {
-        "city" : "QueensTown",
-        "state" : "QueensTown",
+        "city": "QueensTown",
+        "state": "QueensTown",
         "country": "New Zealand",
         "PinCode": 34232
       }
-    ],"Secondary" : [
+    ],
+    "Secondary": [
       {
-        "city" : "Chennai",
-        "state" : "TN",
+        "city": "Chennai",
+        "state": "TN",
         "country": "India",
         "PinCode": 600100
       }
