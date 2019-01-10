@@ -1,7 +1,6 @@
-Feature: As User
-  I want to be able to perform DELETE, GET operation after POST
-  So that I can validate final request
+Feature: As User I want to be able to perform DELETE, GET operation after POST So that I can validate final request
 
+  @Test
   Scenario: Verify DELETE, GET operation after POST
     Given User perform POST operation for "/posts" endpoint with body as
       | id | title              | author            |

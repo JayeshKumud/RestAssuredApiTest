@@ -1,4 +1,4 @@
-package stepDefinations;
+package stepDefinitions;
 
 import cucumber.RestAssuredExtension;
 import cucumber.api.java.Before;

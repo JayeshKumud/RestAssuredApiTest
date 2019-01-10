@@ -1,14 +1,12 @@
-package stepDefinations;
+package stepDefinitions;
 
 import cucumber.RestAssuredExtension;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import org.hamcrest.Matchers;
-import org.testng.Assert;
 
 import java.util.HashMap;
 import java.util.List;

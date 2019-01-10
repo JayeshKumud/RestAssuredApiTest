@@ -1,15 +1,13 @@
-package stepDefinations;
+package stepDefinitions;
 
 import cucumber.RestAssuredExtension;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.testng.Assert;
 import testDataType.Posts;
 
 import java.util.HashMap;
@@ -49,11 +47,11 @@ public class PostGetDelete {
 
     @And("^User perform DELETE operation for \"([^\"]*)\"$")
     public void userPerformDELETEOperationFor(String arg0) throws Throwable {
-
+        System.out.println("Test");
     }
 
     @And("^User should not see body with title as \"([^\"]*)\"$")
     public void userShouldNotSeeBodyWithTitleAs(String arg0) throws Throwable {
-
+        System.out.println("Test");
     }
 }

@@ -1,4 +1,4 @@
-package stepDefinations;
+package stepDefinitions;
 
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
