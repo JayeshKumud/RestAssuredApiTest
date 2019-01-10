@@ -9,9 +9,9 @@ Feature: As User
     And User perform GET operation for path parameter "/posts/{postId}"
       | postId |
       | 8      |
-    And User should see body with title as "API Testing Course "
+    And User should see body with title as "API Testing Course"
     And User perform DELETE operation for "/posts/{postId}"
     And User perform GET operation for path parameter "/posts/{postId}"
       | postId |
       | 8      |
-    And User should not see body with title as "API Testing Course "
+    And User should not see body with title as "API Testing Course"

@@ -7,8 +7,6 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import io.restassured.specification.RequestSpecification;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Map;
 
 public class RestAssuredExtension {
