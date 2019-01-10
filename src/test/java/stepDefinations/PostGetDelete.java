@@ -7,6 +7,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.testng.Assert;
 import testDataType.Posts;
 
 import java.util.HashMap;
@@ -21,34 +24,36 @@ public class PostGetDelete {
     public void userPerformPOSTOperationForEndpointWithBodyAs(String endPoint, DataTable table) throws Throwable {
 
         List<Posts> posts = table.asList(Posts.class);
-        System.out.println(posts.get(0).id);
-        System.out.println(posts.get(0).author);
-        System.out.println(posts.get(0).title);
+        Map<String, String> body = new HashMap();
+        body.put("id", posts.get(0).id);
+        body.put("author", posts.get(0).author);
+        body.put("title", posts.get(0).title);
 
-        //response = RestAssuredExtension.postOpsWithBody(endPoint, body);
+        response = RestAssuredExtension.postOpsWithBody(endPoint, body);
     }
 
     @And("^User perform GET operation for path parameter \"([^\"]*)\"$")
-    public void userPerformGETOperationForPathParameter(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void userPerformGETOperationForPathParameter(String endPoint, DataTable table) throws Throwable {
+        List<Posts> posts = table.asList(Posts.class);
+        Map<String, String> pathParams = new HashMap();
+        pathParams.put("postId", posts.get(0).id);
+
+        response = RestAssuredExtension.getOpsWithPathParams(endPoint, pathParams);
+
     }
 
     @And("^User should see body with title as \"([^\"]*)\"$")
-    public void userShouldSeeBodyWithTitleAs(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void userShouldSeeBodyWithTitleAs(String title) throws Throwable {
+        MatcherAssert.assertThat(response.body().jsonPath().get("title"), Matchers.is(title));
     }
 
     @And("^User perform DELETE operation for \"([^\"]*)\"$")
     public void userPerformDELETEOperationFor(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
     }
 
     @And("^User should not see body with title as \"([^\"]*)\"$")
     public void userShouldNotSeeBodyWithTitleAs(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
     }
 }
