@@ -1,18 +1,24 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="ApiTestingSuite" verbose="1" >
-    <!--<test name="ApiTest">-->
+
+    <test name="ApiTest">
 
         <!--<groups>-->
             <!--<run>-->
-                <!--<include name="demo"/>-->
+                <!--<include name="Test"/>-->
             <!--</run>-->
         <!--</groups>-->
+
+        <classes>
+            <class name="runner.cucumberRunner"/>
+        </classes>
 
         <!--<packages>-->
             <!--<package name="testNG" />-->
             <!--<package name="testNgTests"/>-->
         <!--</packages>-->
 
-    <!--</test>-->
+    </test>
+
 </suite>
