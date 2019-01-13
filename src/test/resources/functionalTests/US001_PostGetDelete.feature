@@ -7,12 +7,14 @@ Feature: As User I want to be able to perform DELETE, GET operation after POST S
       | 8  | API Testing Course | ExecuteAutomation |
     And User perform GET operation for path parameter "/posts/{postId}"
       | id |
-      | 8      |
+      | 8  |
     And User should see body with title as "API Testing Course"
     And User perform DELETE operation for "/posts/{postId}"
+      | id |
+      | 8  |
     And User perform GET operation for path parameter "/posts/{postId}"
       | id |
-      | 8      |
+      | 8  |
     And User should not see body with title as "API Testing Course"
 
   @Test
