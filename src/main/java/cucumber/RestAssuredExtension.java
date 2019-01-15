@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class RestAssuredExtension {
 
-    public static RequestSpecification request;
+    private static RequestSpecification request;
 
     public RestAssuredExtension(){
         // Arrange
@@ -46,5 +46,4 @@ public class RestAssuredExtension {
         request.body(body);
         return request.post(endPoint);
     }
-
 }

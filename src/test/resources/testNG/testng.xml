@@ -11,7 +11,7 @@
         <!--</groups>-->
 
         <classes>
-            <class name="runner.cucumberRunner"/>
+            <class name="runner.CucumberRunner"/>
         </classes>
 
         <!--<packages>-->

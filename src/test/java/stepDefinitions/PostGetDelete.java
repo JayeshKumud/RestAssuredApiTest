@@ -23,7 +23,6 @@ public class PostGetDelete {
 
     @Given("^User perform POST operation for \"([^\"]*)\" endpoint with body as$")
     public void userPerformPOSTOperationForEndpointWithBodyAs(String endPoint, DataTable table) throws Throwable {
-
         List<Posts> posts = table.asList(Posts.class);
         Map<String, String> body = new HashMap();
         body.put("id", posts.get(0).id);
@@ -31,6 +30,7 @@ public class PostGetDelete {
         body.put("title", posts.get(0).title);
 
         response = RestAssuredExtension.postOpsWithBody(endPoint, body);
+        assertThat(response.statusCode(), Matchers.is(201));
     }
 
     @And("^User perform GET operation for path parameter \"([^\"]*)\"$")
@@ -40,7 +40,7 @@ public class PostGetDelete {
         pathParams.put("postId", posts.get(0).id);
 
         response = RestAssuredExtension.getOpsWithPathParams(endPoint, pathParams);
-
+        assertThat(response.statusCode(), Matchers.is(Integer.parseInt(posts.get(0).statuscode)));
     }
 
     @And("^User should see body with title as \"([^\"]*)\"$")
@@ -53,7 +53,9 @@ public class PostGetDelete {
         List<Posts> posts = table.asList(Posts.class);
         Map<String, String> pathParams = new HashMap();
         pathParams.put("postId", posts.get(0).id);
+
         response = RestAssuredExtension.deleteOpsWithPathParams(endPoint, pathParams);
+        assertThat(response.statusCode(), Matchers.is(200));
     }
 
     @And("^User should not see body with title as \"([^\"]*)\"$")
