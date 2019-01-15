@@ -40,7 +40,7 @@ public class PostGetDelete {
         pathParams.put("postId", posts.get(0).id);
 
         response = RestAssuredExtension.getOpsWithPathParams(endPoint, pathParams);
-        assertThat(response.statusCode(), Matchers.is(Integer.parseInt(posts.get(0).statuscode)));
+        assertThat(response.statusCode(), Matchers.is(Integer.parseInt(posts.get(0).statusCode)));
     }
 
     @And("^User should see body with title as \"([^\"]*)\"$")

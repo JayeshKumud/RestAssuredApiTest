@@ -38,4 +38,10 @@ public class ConfigFileReader {
         if(basePath!= null) return basePath;
         else throw new RuntimeException("BasePath not specified in the Configuration.properties file.");
     }
+
+    public String getReportConfigPath(){
+        String  reportConfigPath = properties.getProperty("reportConfigPath");
+        if(reportConfigPath!= null) return reportConfigPath;
+        else throw new RuntimeException("BasePath not specified in the Configuration.properties file.");
+    }
 }
