@@ -1,6 +1,6 @@
 Feature: As User I want to be able to perform DELETE, GET operation after POST So that I can validate final request
 
-  @Test
+  @Test1
   Scenario: Verify DELETE, GET operation after POST
     Given User perform POST operation for "/posts" endpoint with body as
       | id | title              | author            |
@@ -16,9 +16,3 @@ Feature: As User I want to be able to perform DELETE, GET operation after POST S
       | id | statusCode |
       | 8  | 404        |
     And User should not see body with title as "API Testing Course"
-
-  Scenario: Verify post operation using path params
-    Given User perform POST operation for "/posts/{profileNumber}/profile" endpoint with below body
-      | profile | name   |
-      | 1       | Jayesh |
-    And User should see body has name "Jayesh"

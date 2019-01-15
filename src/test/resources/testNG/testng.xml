@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="ApiTestingSuite" verbose="1" >
+<suite name="ApiTestingSuite" verbose="1">
 
     <test name="ApiTest">
 
@@ -11,7 +11,8 @@
         <!--</groups>-->
 
         <classes>
-            <class name="runner.CucumberRunner"/>
+            <class name="runner.CucumberRunner1"/>
+            <class name="runner.CucumberRunner2"/>
         </classes>
 
         <!--<packages>-->
