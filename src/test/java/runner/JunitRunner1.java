@@ -9,9 +9,9 @@ import org.testng.annotations.AfterClass;
 @CucumberOptions(
         features = "src/test/resources/functionalTests",
         glue= {"stepDefinitions"},
-        plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},
-        monochrome = true, tags={"@Test2"})
-public class CucumberRunner2 extends AbstractTestNGCucumberTests {
+        plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/CucumberReports/report.html"},
+        monochrome = true, tags={"@Test1"})
+public class JunitRunner1 extends AbstractTestNGCucumberTests {
     @AfterClass
     public static void writeExtentReport(){
         Reporter.loadXMLConfig(FileReaderManager.INSTANCE.getConfigFileReader().getReportConfigPath());

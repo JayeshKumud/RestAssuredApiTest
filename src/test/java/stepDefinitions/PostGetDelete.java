@@ -24,7 +24,7 @@ public class PostGetDelete {
     @Given("^User perform POST operation for \"([^\"]*)\" endpoint with body as$")
     public void userPerformPOSTOperationForEndpointWithBodyAs(String endPoint, DataTable table) throws Throwable {
         List<Posts> posts = table.asList(Posts.class);
-        Map<String, String> body = new HashMap();
+        Map<String, String> body = new HashMap<>();
         body.put("id", posts.get(0).id);
         body.put("author", posts.get(0).author);
         body.put("title", posts.get(0).title);
@@ -36,7 +36,7 @@ public class PostGetDelete {
     @And("^User perform GET operation for path parameter \"([^\"]*)\"$")
     public void userPerformGETOperationForPathParameter(String endPoint, DataTable table) throws Throwable {
         List<Posts> posts = table.asList(Posts.class);
-        Map<String, String> pathParams = new HashMap();
+        Map<String, String> pathParams = new HashMap<>();
         pathParams.put("postId", posts.get(0).id);
 
         response = RestAssuredExtension.getOpsWithPathParams(endPoint, pathParams);
@@ -51,7 +51,7 @@ public class PostGetDelete {
     @And("^User perform DELETE operation for \"([^\"]*)\"$")
     public void userPerformDELETEOperationFor(String endPoint, DataTable table) throws Throwable {
         List<Posts> posts = table.asList(Posts.class);
-        Map<String, String> pathParams = new HashMap();
+        Map<String, String> pathParams = new HashMap<>();
         pathParams.put("postId", posts.get(0).id);
 
         response = RestAssuredExtension.deleteOpsWithPathParams(endPoint, pathParams);

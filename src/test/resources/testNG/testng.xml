@@ -11,8 +11,8 @@
         <!--</groups>-->
 
         <classes>
-            <class name="runner.CucumberRunner1"/>
-            <class name="runner.CucumberRunner2"/>
+            <class name="runner.JunitRunner1"/>
+            <class name="runner.JunitRunner2"/>
         </classes>
 
         <!--<packages>-->
